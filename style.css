@@ -12,6 +12,24 @@
     justify-content: start;
 }
 
+#languages .skill
+{
+    display: block;
+    float: left;
+    background-color: #666;
+    height: 100%;
+}
+
+#languages .skill-bar
+{
+    display: block;
+    overflow: hidden;
+    background-color: #ccc;
+    border-radius: 999rem;
+    width: 100%;
+    height: 0.4rem;
+}
+
 #languages>ul
 {
     padding-left: 0;
