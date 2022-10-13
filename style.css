@@ -1,6 +1,12 @@
 #contact-info>ul
 {
     margin: 0;
+    padding-left: 0;
+}
+
+#contact-info>ul>li
+{
+    display: block;
 }
 
 #content
