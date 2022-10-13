@@ -80,6 +80,7 @@ h1
     text-align: center;
     font-size: 1rem;
     font-weight: normal;
+    margin-bottom: 0.5rem;
 }
 
 h1>span>*~*
@@ -95,7 +96,7 @@ h2
 
 header
 {
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
     border-bottom: 2px solid black;
 }
 
