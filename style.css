@@ -61,7 +61,7 @@ h1
     font-weight: normal;
 }
 
-h1 *~*
+h1>span>*~*
 {
     margin-left: 1rem;
 }
