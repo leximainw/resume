@@ -12,11 +12,26 @@
     justify-content: start;
 }
 
+#languages>ul
+{
+    padding-left: 0;
+}
+
+#languages>ul>li
+{
+    display: block;
+}
+
 #name
 {
     display: block;
     color: #609;
     font-size: 2rem;
+}
+
+#skills>ul
+{
+    padding-left: 20px;
 }
 
 h1
