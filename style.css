@@ -1,12 +1,16 @@
 #contact-info>ul
 {
+    display: flex;
+    justify-content: space-evenly;
     margin: 0;
     padding-left: 0;
 }
 
 #contact-info>ul>li
 {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #content
