@@ -1,3 +1,8 @@
+const monthAbbr = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+]
+
 document.querySelectorAll('#languages .skill')
     .forEach(elem => {
         if (elem.innerText > 100) {
@@ -23,12 +28,15 @@ document.querySelectorAll('#experience article')
         const whenStart = when.querySelector('.start')
         const whenEnd = when.querySelector('.end')
         const startDate = whenStart
-            ? new Date(whenStart.innerText)
-                .toUTCString()
+            ? convertDateText(whenStart.innerText)
             : 'Unknown'
         const endDate = whenEnd
-            ? new Date(whenEnd.innerText)
-                .toUTCString()
+            ? convertDateText(whenEnd.innerText)
             : 'Present'
         console.log(`${startDate} - ${endDate}`)
     })
+
+function convertDateText(text) {
+    const date = new Date(text)
+    return `${monthAbbr[date.getUTCMonth()]} ${String(date.getUTCFullYear()).padStart(4, '0')}`
+}
