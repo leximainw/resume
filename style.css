@@ -141,11 +141,11 @@ main
 main h2
 {
     margin-left: 3rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
 }
 
 main h2~p
 {
     text-indent: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0;
 }
