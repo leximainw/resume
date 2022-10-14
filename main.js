@@ -25,27 +25,15 @@ document.querySelectorAll('#experience article')
         if (!(where && when)) {
             return
         }
-        let whenStart = when.querySelector('.start')
-        let whenEnd = when.querySelector('.end')
+        const whenStart = when.querySelector('.start')
+        const whenEnd = when.querySelector('.end')
         const startDate = whenStart
             ? convertDateText(whenStart.innerText)
             : 'Unknown'
         const endDate = whenEnd
             ? convertDateText(whenEnd.innerText)
             : 'Present'
-        if (!whenStart) {
-            whenStart = document.createElement('div')
-            whenStart.classList.add('start')
-        }
-        whenStart.innerText = startDate
-        if (!whenEnd) {
-            whenEnd = document.createElement('div')
-            whenEnd.classList.add('end')
-        }
-        whenEnd.innerText = endDate
-        when.innerHTML = '&ndash;'
-        when.prepend(startDate)
-        when.append(endDate)
+        when.innerText = `${startDate}\u2013${endDate}`
         where.append(when)
     })
 
