@@ -12,3 +12,23 @@ document.querySelectorAll('#languages .skill')
         elem.style.width = `${Math.min(elem.innerText, 100)}%`
         elem.innerText = ''
     })
+
+document.querySelectorAll('#experience article')
+    .forEach(elem => {
+        const where = elem.querySelector('.where')
+        const when = elem.querySelector('.when')
+        if (!(where && when)) {
+            return
+        }
+        const whenStart = when.querySelector('.start')
+        const whenEnd = when.querySelector('.end')
+        const startDate = whenStart
+            ? new Date(whenStart.innerText)
+                .toUTCString()
+            : 'Unknown'
+        const endDate = whenEnd
+            ? new Date(whenEnd.innerText)
+                .toUTCString()
+            : 'Present'
+        console.log(`${startDate} - ${endDate}`)
+    })
