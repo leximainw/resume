@@ -25,6 +25,18 @@
     padding: 0.25in;
 }
 
+#experience .when
+{
+    display: inline;
+    margin-left: 1rem;
+    font-style: italic;
+}
+
+#experience .when>*
+{
+    display: inline;
+}
+
 #info
 {
     display: flex;
