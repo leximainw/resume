@@ -1,4 +1,4 @@
-[...document.querySelectorAll('#languages .skill')]
+document.querySelectorAll('#languages .skill')
     .forEach(elem => {
         if (elem.innerText > 100) {
             const overskillDiv = document.createElement('div')
