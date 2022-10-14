@@ -135,6 +135,11 @@
     height: 100%;
 }
 
+#sidebar h2
+{
+    font-size: 1.25rem;
+}
+
 #skills>ul
 {
     padding-left: 20px;
@@ -163,7 +168,6 @@ h1>span>*~*
 h2
 {
     color: #609;
-    font-size: 1.25rem;
 }
 
 main
