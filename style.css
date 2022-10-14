@@ -95,6 +95,11 @@
     font-size: 2rem;
 }
 
+#profile>p
+{
+    text-indent: 1rem;
+}
+
 #sidebar
 {
     padding: 0 1rem 0.25in 0.25in;
@@ -146,6 +151,5 @@ main h2
 
 main h2~p
 {
-    text-indent: 1rem;
     margin-top: 0;
 }
