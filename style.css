@@ -55,18 +55,21 @@
 
 #experience article>.title::before
 {
-    content: "as ";
+    display: inline-block;
+    content: "as\00a0";
     color: #999;
+    font-size: 1rem;
+    transform: translateY(-2px);
 }
 
 #experience article>.title.a::before
 {
-    content: "as a ";
+    content: "as a\00a0";
 }
 
 #experience article>.title.an::before
 {
-    content: "as an ";
+    content: "as an\00a0";
 }
 
 #experience article>ul
