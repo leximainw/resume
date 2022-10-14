@@ -123,3 +123,15 @@ main
 {
     padding-left: 1rem;
 }
+
+main h2
+{
+    margin-left: 3rem;
+    margin-bottom: 0;
+}
+
+main h2~p
+{
+    text-indent: 1rem;
+    margin-top: 0.5rem;
+}
