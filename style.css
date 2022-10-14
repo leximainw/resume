@@ -53,6 +53,22 @@
     display: inline;
 }
 
+#experience article>.title::before
+{
+    content: "as ";
+    color: #999;
+}
+
+#experience article>.title.a::before
+{
+    content: "as a ";
+}
+
+#experience article>.title.an::before
+{
+    content: "as an ";
+}
+
 #experience article>ul
 {
     margin-block-start: 0.5rem;
