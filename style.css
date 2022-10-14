@@ -25,11 +25,25 @@
     padding: 0.25in;
 }
 
+#experience .title
+{
+    font-size: 1.15rem;
+}
+
 #experience .when
 {
     display: inline;
     margin-left: 1rem;
+    color: #f9c;
+    font-size: 1.15rem;
+    font-weight: normal;
     font-style: italic;
+}
+
+#experience .where
+{
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
 #experience .when>*
