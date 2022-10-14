@@ -42,7 +42,7 @@
 #languages .overskilled>img
 {
     position: relative;
-    bottom: 1rem;
+    bottom: calc(1rem - 0.5px);
     left: calc(100% - 2px);
     width: 12px;
 }
