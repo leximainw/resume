@@ -33,7 +33,11 @@ document.querySelectorAll('#experience article')
         const endDate = whenEnd
             ? convertDateText(whenEnd.innerText)
             : 'Present'
-        when.innerText = `${startDate}\u2013${endDate}`
+        if (startDate !== endDate) {
+            when.innerText = `${startDate}\u2013${endDate}`
+        } else {
+            when.innerText = startDate
+        }
         where.append(when)
     })
 
