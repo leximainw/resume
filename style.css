@@ -91,6 +91,11 @@
     flex-grow: 1;
 }
 
+#languages h2~ul
+{
+    margin-top: 0rem;
+}
+
 #languages .overskilled
 {
     display: block;
@@ -159,9 +164,16 @@
     font-size: 1.25rem;
 }
 
+#languages h2
+{
+    font-size: 1.1rem;
+    margin: 0.4rem 0 0.4rem 1rem;
+}
+
 #skills>ul
 {
     padding-left: 20px;
+    margin-bottom: 0;
 }
 
 #whoami
