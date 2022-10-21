@@ -41,6 +41,13 @@ document.querySelectorAll('#experience article')
         where.append(when)
     })
 
+document.querySelectorAll('#experience .project-desc')
+    .forEach(elem => {
+        if (elem.innerHTML.startsWith(': ')) {
+            elem.innerHTML = elem.innerHTML.substring(2)
+        }
+    })
+
 function convertDateText(text) {
     const date = new Date(text)
     return `${monthAbbr[date.getUTCMonth()]} ${String(date.getUTCFullYear()).padStart(4, '0')}`
