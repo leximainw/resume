@@ -226,3 +226,12 @@ main h2~p
 {
     margin-top: 0;
 }
+
+@media print
+{
+    * a   /* specificity hack: just "a" won't override the default underline styling */
+    {
+        color: inherit;
+        text-decoration: none;
+    }
+}
