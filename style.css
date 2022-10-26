@@ -148,6 +148,26 @@
     display: block;
 }
 
+#languages.no-bars .overskilled
+{
+    display: none;
+}
+
+#languages.no-bars .skill-bar
+{
+    display: none;
+}
+
+#languages.no-bars>ul
+{
+    padding-left: 20px;
+}
+
+#languages.no-bars>ul>li
+{
+    display: list-item;
+}
+
 #name
 {
     display: block;
