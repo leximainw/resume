@@ -1,0 +1,13 @@
+#root
+{
+    width: 816px;
+}
+
+@media print
+{
+    #root
+    {
+        height: 1056px;
+    }
+}
+
