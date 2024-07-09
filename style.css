@@ -80,6 +80,11 @@
     content: "as an\00a0";
 }
 
+#experience article>.title.the::before
+{
+    content: "as the\00a0";
+}
+
 #experience article>ul
 {
     margin-block-start: 0.5rem;
