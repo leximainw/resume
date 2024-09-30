@@ -1,17 +1,3 @@
-body
-{
-    background-color: black;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#root
-{
-    background-color: white;
-}
-
 #contact-info
 {
     margin: 0.5rem 0;
