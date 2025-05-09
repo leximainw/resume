@@ -1,5 +1,6 @@
 #contact-info
 {
+    font: 14px/16px "Arial", sans-serif;
     margin: 0.5rem 0;
 }
 
@@ -209,6 +210,11 @@
 {
     border-bottom: 2px solid black;
     padding: 0.25in 0.25in 0;
+}
+
+body
+{
+    font: 16px/18px "Arial", sans-serif;
 }
 
 h1
