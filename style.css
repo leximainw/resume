@@ -256,12 +256,30 @@ main.squeeze h2~p
     margin-bottom: 0.5rem;
 }
 
+.dragging
+{
+    position: absolute;
+}
+
 @media print
 {
     * a   /* specificity hack: just "a" won't override the default underline styling */
     {
         color: inherit;
         text-decoration: none;
+    }
+
+    .hidden
+    {
+        display: none;
+    }
+}
+
+@media screen
+{
+    .hidden
+    {
+        opacity: 50%;
     }
 }
 
