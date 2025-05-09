@@ -1,13 +1,23 @@
 #root
 {
+    height: 1056px;
     width: 816px;
 }
 
-@media print
+@media screen
 {
     #root
     {
-        height: 1056px;
+        background-color: #fff;
+    }
+
+    body
+    {
+        align-items: center;
+        background-color: #ddd;
+        display: flex;
+        justify-content: center;
+        margin: 0;
     }
 }
 
