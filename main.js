@@ -48,6 +48,82 @@ document.querySelectorAll('#experience .project-desc')
         }
     })
 
+
+let dragging = null
+let dragTarget = null
+let dragFrom = null
+let dragSpacer = null
+document.querySelectorAll('article, li')
+    .forEach(elem => {
+        elem.addEventListener('mousedown', event => {
+            if (dragTarget) {
+                return
+            }
+            //if (!elem.classList.contains('drag')) {
+            //    return
+            //}
+            console.log(event)
+            dragging = false
+            dragTarget = elem
+            elemRect = elem.getBoundingClientRect()
+            dragFrom = {
+                x: event.pageX,
+                y: event.pageY - (elemRect.top + window.scrollY),
+                baseX: elemRect.left + window.scrollX,
+            }
+            event.stopPropagation()
+            event.preventDefault()
+        })
+    })
+
+document.querySelector('body').addEventListener('mousemove', event => {
+    if (!dragTarget) {
+        return
+    }
+    let pageX = event.pageX
+    let pageY = event.pageY
+    let deltaX = pageX - dragFrom.x
+    let deltaY = pageY - dragFrom.y
+    if (dragging) {
+        dragTarget.style.left = `${dragFrom.baseX + Math.tanh(deltaX / 8) * 8}px`
+        dragTarget.style.top = `${deltaY}px`
+    } else if (deltaX * deltaX + deltaY * deltaY > 16) {
+        if (!dragging) {
+            dragging = true
+            dragSpacer = document.createElement('div')
+            dragSpacer.style.width = `${dragTarget.clientWidth}px`
+            dragSpacer.style.height = `${dragTarget.clientHeight}px`
+            dragTarget.after(dragSpacer)
+            dragTarget.classList.add('dragging')
+            dragTarget.parentElement.classList.add('dragFlow')
+        }
+    }
+    event.stopPropagation()
+    event.preventDefault()
+})
+
+document.querySelector('body').addEventListener('mouseup', event => {
+    if (!dragTarget) {
+        return
+    }
+    if (!dragging) {
+        if (dragTarget.classList.contains('hidden')) {
+            dragTarget.classList.remove('hidden')
+        } else {
+            dragTarget.classList.add('hidden')
+        }
+    } else {
+        dragTarget.classList.remove('dragging')
+        dragTarget.parentElement.classList.remove('dragFlow')
+        console.log("todo")
+        dragSpacer.remove()
+        dragSpacer = null
+    }
+    dragTarget = null
+    event.stopPropagation()
+    event.preventDefault()
+})
+
 function convertDateText(text) {
     const date = new Date(text)
     return `${monthAbbr[date.getUTCMonth()]} ${String(date.getUTCFullYear()).padStart(4, '0')}`
