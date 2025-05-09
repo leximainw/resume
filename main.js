@@ -97,6 +97,7 @@ document.querySelector('body').addEventListener('mousemove', event => {
             dragTarget.after(dragSpacer)
             dragTarget.classList.add('dragging')
             dragTarget.parentElement.classList.add('dragFlow')
+            dragTarget.style.width = dragSpacer.style.width
         }
     }
     event.stopPropagation()
