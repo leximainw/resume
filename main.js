@@ -62,7 +62,6 @@ document.querySelectorAll('article, li')
             //if (!elem.classList.contains('drag')) {
             //    return
             //}
-            console.log(event)
             dragging = false
             dragTarget = elem
             elemRect = elem.getBoundingClientRect()
@@ -121,7 +120,6 @@ document.querySelector('body').addEventListener('mouseup', event => {
         dragTarget.style.left = null
         dragTarget.style.top = null
         dragTarget.style.width = null
-        console.log("todo")
         dragSpacer.remove()
         dragSpacer = null
     }
