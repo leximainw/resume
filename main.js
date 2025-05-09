@@ -91,13 +91,14 @@ document.querySelector('body').addEventListener('mousemove', event => {
     } else if (deltaX * deltaX + deltaY * deltaY > 16) {
         if (!dragging) {
             dragging = true
+            elemRect = dragTarget.getBoundingClientRect()
             dragSpacer = document.createElement('div')
             dragSpacer.style.width = `${dragTarget.clientWidth}px`
             dragSpacer.style.height = `${dragTarget.clientHeight}px`
             dragTarget.after(dragSpacer)
             dragTarget.classList.add('dragging')
             dragTarget.parentElement.classList.add('dragFlow')
-            dragTarget.style.width = dragSpacer.style.width
+            dragTarget.style.width = `${elemRect.right - elemRect.left}px`
         }
     }
     event.stopPropagation()
