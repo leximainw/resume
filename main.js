@@ -118,6 +118,9 @@ document.querySelector('body').addEventListener('mouseup', event => {
     } else {
         dragTarget.classList.remove('dragging')
         dragTarget.parentElement.classList.remove('dragFlow')
+        dragTarget.style.left = null
+        dragTarget.style.top = null
+        dragTarget.style.width = null
         console.log("todo")
         dragSpacer.remove()
         dragSpacer = null
