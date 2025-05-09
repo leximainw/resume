@@ -85,7 +85,8 @@ document.querySelector('body').addEventListener('mousemove', event => {
     let deltaX = pageX - dragFrom.x
     let deltaY = pageY - dragFrom.y
     if (dragging) {
-        dragTarget.style.left = `${dragFrom.baseX + Math.tanh(deltaX / 8) * 8}px`
+        let dx = deltaX / 8;
+        dragTarget.style.left = `${dragFrom.baseX + (dx / Math.sqrt(1 + dx * dx)) * 8}px`
         dragTarget.style.top = `${deltaY}px`
     } else if (deltaX * deltaX + deltaY * deltaY > 16) {
         if (!dragging) {
