@@ -86,10 +86,31 @@ document.querySelector('body').addEventListener('mousemove', event => {
     if (dragging) {
         let dx = deltaX / 8;
         dragTarget.style.left = `${dragFrom.baseX + (dx / Math.sqrt(1 + dx * dx)) * 8}px`
-        let baseY = Math.max(Math.min(deltaY, dragTarget.parentElement.getBoundingClientRect().bottom + window.scrollY - dragTarget.clientHeight),
-            dragTarget.parentElement.getBoundingClientRect().top + window.scrollY);
+        let baseY = Math.max(Math.min(deltaY, dragTarget.parentElement.getBoundingClientRect().bottom + window.scrollY - dragTarget.clientHeight / 2),
+            dragTarget.parentElement.getBoundingClientRect().top + window.scrollY - dragTarget.clientHeight / 2);
         let dy = (deltaY - baseY) / 8
         dragTarget.style.top = `${baseY + (dy / Math.sqrt(1 + dy * dy)) * 8}px`
+        let dragRect = dragTarget.getBoundingClientRect()
+        let dragMid = dragRect.top + dragFrom.y + window.scrollY
+        let inserted = false
+        for (elem of dragTarget.parentElement.children) {
+            if (elem === dragSpacer) {
+                afterSpacer = true
+                continue
+            } else if (elem === dragTarget) {
+                continue
+            }
+            let elemRect = elem.getBoundingClientRect()
+            let elemMid = (elemRect.top + elemRect.bottom) / 2 + window.scrollY
+            if (elemMid > dragMid) {
+                elem.before(dragSpacer)
+                inserted = true
+                break
+            }
+        }
+        if (!inserted) {
+            dragTarget.parentElement.append(dragSpacer)
+        }
     } else if (deltaX * deltaX + deltaY * deltaY > 16) {
         if (!dragging) {
             dragging = true
@@ -123,6 +144,7 @@ document.querySelector('body').addEventListener('mouseup', event => {
         dragTarget.style.left = null
         dragTarget.style.top = null
         dragTarget.style.width = null
+        dragSpacer.after(dragTarget)
         dragSpacer.remove()
         dragSpacer = null
     }
