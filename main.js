@@ -86,8 +86,8 @@ document.querySelector('body').addEventListener('mousemove', event => {
     if (dragging) {
         let dx = deltaX / 8;
         dragTarget.style.left = `${dragFrom.baseX + (dx / Math.sqrt(1 + dx * dx)) * 8}px`
-        let baseY = Math.max(Math.min(deltaY, dragTarget.parentElement.getBoundingClientRect().bottom + window.scrollY - dragTarget.clientHeight / 2),
-            dragTarget.parentElement.getBoundingClientRect().top + window.scrollY - dragTarget.clientHeight / 2);
+        let baseY = Math.max(Math.min(deltaY, dragTarget.parentElement.getBoundingClientRect().bottom + window.scrollY),
+            dragTarget.parentElement.getBoundingClientRect().top + window.scrollY);
         let dy = (deltaY - baseY) / 8
         dragTarget.style.top = `${baseY + (dy / Math.sqrt(1 + dy * dy)) * 8}px`
         let dragRect = dragTarget.getBoundingClientRect()
