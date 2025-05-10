@@ -255,6 +255,11 @@ main.squeeze h2~p
     position: absolute;
 }
 
+.no-wrap
+{
+    white-space: nowrap;
+}
+
 @media print
 {
     * a   /* specificity hack: just "a" won't override the default underline styling */
