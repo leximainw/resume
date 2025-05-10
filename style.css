@@ -112,7 +112,6 @@
 
 #languages .overskilled
 {
-    display: block;
     width: 100%;
     height: 0;
 }
@@ -127,7 +126,6 @@
 
 #languages .skill
 {
-    display: block;
     float: left;
     background-color: #666;
     height: 100%;
@@ -135,7 +133,6 @@
 
 #languages .skill-bar
 {
-    display: block;
     overflow: hidden;
     margin: 0.25rem 0;
     background-color: #ccc;
@@ -147,11 +144,6 @@
 #languages>ul
 {
     padding-left: 0;
-}
-
-#languages>ul>li
-{
-    display: block;
 }
 
 #languages.no-bars .overskilled
@@ -167,11 +159,6 @@
 #languages.no-bars>ul
 {
     padding-left: 20px;
-}
-
-#languages.no-bars>ul>li
-{
-    display: list-item;
 }
 
 #name
@@ -284,6 +271,16 @@ main.squeeze h2~p
 
 @media screen
 {
+    #languages .overskilled, #languages .skill, #languages .skill-bar, #languages>ul>li
+    {
+        display: block;
+    }
+
+    #languages.no-bars>ul>li
+    {
+        display: list-item;
+    }
+
     .hidden
     {
         opacity: 50%;
