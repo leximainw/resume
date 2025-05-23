@@ -135,8 +135,30 @@ document.querySelector('body').addEventListener('mouseup', event => {
     if (!dragging) {
         if (dragTarget.classList.contains('hidden')) {
             dragTarget.classList.remove('hidden')
+            if (dragTarget.parentElement.classList.contains('collapsible')) {
+                dragTarget.parentElement.classList.remove('hidden')
+                let target = document.getElementById(dragTarget.parentElement.dataset.collapseTarget)
+                target.classList.remove('hidden')
+                while ((target = document.getElementById(target.dataset.collapseChain)) !== null) {
+                    target.classList.remove('hidden')
+                }
+            }
         } else {
             dragTarget.classList.add('hidden')
+            if (dragTarget.parentElement.classList.contains('collapsible')) {
+                const HIDE_SELECTOR = ':scope > :not(.hidden, .hideable)'
+                if (dragTarget.parentElement.querySelector(HIDE_SELECTOR) === null)
+                    dragTarget.parentElement.classList.add('hidden')
+                let target = document.getElementById(dragTarget.parentElement.dataset.collapseTarget)
+                if (target.querySelector(HIDE_SELECTOR) === null) {
+                    target.classList.add('hidden')
+                    while ((target = document.getElementById(target.dataset.collapseChain)) !== null) {
+                        if (target.querySelector(HIDE_SELECTOR) !== null)
+                            break
+                        target.classList.add('hidden')
+                    }
+                }
+            }
         }
     } else {
         dragTarget.classList.remove('dragging')

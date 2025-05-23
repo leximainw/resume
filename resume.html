@@ -55,9 +55,9 @@
                             Long background in developing both personal projects in C#, JS, Rust, C++, and C, and game mods in TorqueScript and Lua.
                         </p>
                     </div>
-                    <div id="experience">
-                        <h2>Experience</h2>
-                        <div>
+                    <div id="experience" class="experience">
+                        <h2 class="hideable">Experience</h2>
+                        <div class="collapsible" data-collapse-target="experience">
                             <article>
                                 <div class="where">Momentum Learning</div>
                                 <div class="title a">Software Developer</div>
@@ -122,13 +122,15 @@
                                 </ul>
                             </article>
                         </div>
-                        <h2>Independent Projects</h2>
-                        <article>
+                    </div>
+                    <div id="independent-projects" class="experience">
+                        <h2 class="hideable">Independent Projects</h2>
+                        <article id="independent-projects-block" data-collapse-chain="independent-projects">
                             <!-- <div class="where">Independent Projects</div> -->
                             <!-- <div class="when">
                                 <div class="start">2010-09-20</div>
                             </div> -->
-                            <ul>
+                            <ul class="collapsible" data-collapse-target="independent-projects-block">
                                 <li>
                                     Custom Desktop<span class="project-desc">: customized desktop behavior</span>
                                     <ul>
@@ -154,16 +156,18 @@
                     </div>
                 </main>
                 <div id="sidebar">
-                    <div id="skills">
-                        <h2>Soft Skills</h2>
-                        <ul>
+                    <div id="soft-skills">
+                        <h2 class="hideable">Soft Skills</h2>
+                        <ul class="collapsible" data-collapse-target="soft-skills">
                             <li>Customer service</li>
                             <li>Collaboration</li>
                             <li>Detail-oriented</li>
                             <li>Mentoring</li>
                         </ul>
-                        <h2>Technical Skills</h2>
-                        <ul>
+                    </div>
+                    <div id="tech-skills">
+                        <h2 class="hideable">Technical Skills</h2>
+                        <ul class="collapsible" data-collapse-target="tech-skills">
                             <li>Linux/Unix CLI</li>
                             <li>Windows CLI</li>
                             <li>Git & GitHub</li>
@@ -185,65 +189,65 @@
                             <li>Algorithms</li>
                             <li>Data Structures</li>
                         </ul>
-                    </div>
-                    <div id="languages" class="no-bars">
-                        <h2>Languages</h2>
-                        <ul>
-                            <li class="language">
-                                <span class="name">C#</span>
-                                <span class="skill-bar">
-                                    <span class="skill">97</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">TorqueScript</span>
-                                <span class="skill-bar">
-                                    <span class="skill">101</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">HTML/CSS/JS</span>
-                                <span class="skill-bar">
-                                    <span class="skill">90</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">React</span>
-                                <span class="skill-bar">
-                                    <span class="skill">75</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">Rust</span>
-                                <span class="skill-bar">
-                                    <span class="skill">80</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">Python</span>
-                                <span class="skill-bar">
-                                    <span class="skill">70</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">C</span>
-                                <span class="skill-bar">
-                                    <span class="skill">50</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">C++</span>
-                                <span class="skill-bar">
-                                    <span class="skill">40</span>
-                                </span>
-                            </li>
-                            <li class="language">
-                                <span class="name">Lua</span>
-                                <span class="skill-bar">
-                                    <span class="skill">80</span>
-                                </span>
-                            </li>
-                        </ul>
+                        <div id="languages" class="no-bars" data-collapse-chain="tech-skills">
+                            <h2 class="hideable">Languages</h2>
+                            <ul class="collapsible" data-collapse-target="languages">
+                                <li class="language">
+                                    <span class="name">C#</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">97</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">TorqueScript</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">101</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">HTML/CSS/JS</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">90</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">React</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">75</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">Rust</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">80</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">Python</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">70</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">C</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">50</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">C++</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">40</span>
+                                    </span>
+                                </li>
+                                <li class="language">
+                                    <span class="name">Lua</span>
+                                    <span class="skill-bar">
+                                        <span class="skill">80</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
