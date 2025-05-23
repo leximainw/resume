@@ -48,6 +48,14 @@ document.querySelectorAll('#experience .project-desc')
         }
     })
 
+document.querySelector("#profile p").addEventListener('input', e => {
+    if (e.target.innerText.trim() == "") {
+        document.querySelector("#profile").classList.add('hidden')
+    } else {
+        document.querySelector("#profile").classList.remove('hidden')
+    }
+})
+
 
 let dragging = null
 let dragTarget = null
