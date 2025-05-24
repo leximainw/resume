@@ -80,9 +80,6 @@ document.querySelectorAll('article, li')
             if (dragTarget) {
                 return
             }
-            //if (!elem.classList.contains('drag')) {
-            //    return
-            //}
             dragging = false
             dragTarget = elem
             let elemRect = elem.getBoundingClientRect()
