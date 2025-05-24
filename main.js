@@ -88,6 +88,7 @@ document.querySelectorAll('article, li')
                 y: event.pageY,
                 baseX: elemRect.left + window.scrollX,
                 baseY: elemRect.top + window.scrollY,
+                horiz: elem.parentElement.classList.contains('drag-horiz')
             }
             dragStart = Date.now()
             event.stopPropagation()
@@ -106,16 +107,29 @@ document.querySelector('body').addEventListener('mousemove', event => {
     let baseY = elemRect.top + window.scrollY
     let deltaX = (pageX - baseX) - (dragFrom.x - dragFrom.baseX)
     let deltaY = (pageY - baseY) - (dragFrom.y - dragFrom.baseY)
+    let horiz = dragFrom.horiz
     if (dragging) {
-        let dx = deltaX / 8;
-        dragTarget.style.left = `${dragFrom.baseX + (dx / Math.sqrt(1 + dx * dx)) * 8}px`
-        let dy = deltaY / 8
-        let newY = Math.max(Math.min(baseY + (dy / Math.sqrt(1 + dy * dy)) * 8,
-            dragTarget.parentElement.getBoundingClientRect().bottom + window.scrollY),
-            dragTarget.parentElement.getBoundingClientRect().top + window.scrollY);
-        dragTarget.style.top = `${newY}px`
         let dragRect = dragTarget.getBoundingClientRect()
-        let dragMid = dragRect.top + (dragFrom.y - dragFrom.baseY) + window.scrollY
+        let parentRect = dragTarget.parentElement.getBoundingClientRect()
+        if (horiz) {
+            let dy = deltaY / 8
+            let targetX = baseX + deltaX
+            let newX = Math.min(Math.max(targetX, parentRect.left), parentRect.right)
+            let dx = (targetX - newX) / 8
+            newX += (dx / Math.sqrt(1 + dx * dx)) * 8
+            dragTarget.style.left = `${newX}px`
+            dragTarget.style.top = `${dragFrom.baseY + (dy / Math.sqrt(1 + dy * dy)) * 8}px`
+        } else {
+            let dx = deltaX / 8
+            let targetY = baseY + deltaY
+            let newY = Math.min(Math.max(targetY, parentRect.top), parentRect.bottom)
+            let dy = (targetY - newY) / 8
+            newY += (dy / Math.sqrt(1 + dy * dy)) * 8
+            dragTarget.style.left = `${dragFrom.baseX + (dx / Math.sqrt(1 + dx * dx)) * 8}px`
+            dragTarget.style.top = `${newY}px`
+        }
+        let dragMid = horiz ? dragRect.left + (dragFrom.x - dragFrom.baseX) + window.scrollX
+            : dragRect.top + (dragFrom.y - dragFrom.baseY) + window.scrollY
         let inserted = false
         for (elem of dragTarget.parentElement.children) {
             if (elem === dragSpacer) {
@@ -125,7 +139,8 @@ document.querySelector('body').addEventListener('mousemove', event => {
                 continue
             }
             let elemRect = elem.getBoundingClientRect()
-            let elemMid = (elemRect.top + elemRect.bottom) / 2 + window.scrollY
+            let elemMid = horiz ? (elemRect.left + elemRect.right) / 2 + window.scrollX
+                : (elemRect.top + elemRect.bottom) / 2 + window.scrollY
             if (elemMid > dragMid) {
                 elem.before(dragSpacer)
                 inserted = true
