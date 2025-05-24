@@ -3,6 +3,18 @@ const monthAbbr = [
     'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ]
 
+document.getElementById("accent-color").addEventListener('change', e => {
+    document.documentElement.style.setProperty('--accent-color', e.target.value)
+})
+
+document.getElementById("web-visibility").addEventListener('click', e => {
+    if (e.target.checked) {
+        document.body.classList.remove('always-hide')
+    } else {
+        document.body.classList.add('always-hide')
+    }
+})
+
 document.querySelectorAll('#languages .skill')
     .forEach(elem => {
         if (elem.innerText > 100) {
