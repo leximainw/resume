@@ -41,7 +41,7 @@ document.querySelectorAll('#experience article')
         where.append(when)
     })
 
-document.querySelectorAll('#experience .project-desc')
+document.querySelectorAll('.experience .project-desc')
     .forEach(elem => {
         if (elem.innerHTML.startsWith(': ')) {
             elem.innerHTML = elem.innerHTML.substring(2)
@@ -61,6 +61,7 @@ let dragging = null
 let dragTarget = null
 let dragFrom = null
 let dragSpacer = null
+let dragStart = 0
 document.querySelectorAll('article, li')
     .forEach(elem => {
         elem.addEventListener('mousedown', event => {
@@ -72,12 +73,14 @@ document.querySelectorAll('article, li')
             //}
             dragging = false
             dragTarget = elem
-            elemRect = elem.getBoundingClientRect()
+            let elemRect = elem.getBoundingClientRect()
             dragFrom = {
                 x: event.pageX,
-                y: event.pageY - (elemRect.top + window.scrollY),
+                y: event.pageY,
                 baseX: elemRect.left + window.scrollX,
+                baseY: elemRect.top + window.scrollY,
             }
+            dragStart = Date.now()
             event.stopPropagation()
             event.preventDefault()
         })
@@ -87,19 +90,23 @@ document.querySelector('body').addEventListener('mousemove', event => {
     if (!dragTarget) {
         return
     }
+    let elemRect = dragTarget.getBoundingClientRect()
     let pageX = event.pageX
     let pageY = event.pageY
-    let deltaX = pageX - dragFrom.x
-    let deltaY = pageY - dragFrom.y
+    let baseX = elemRect.left + window.scrollX
+    let baseY = elemRect.top + window.scrollY
+    let deltaX = (pageX - baseX) - (dragFrom.x - dragFrom.baseX)
+    let deltaY = (pageY - baseY) - (dragFrom.y - dragFrom.baseY)
     if (dragging) {
         let dx = deltaX / 8;
         dragTarget.style.left = `${dragFrom.baseX + (dx / Math.sqrt(1 + dx * dx)) * 8}px`
-        let baseY = Math.max(Math.min(deltaY, dragTarget.parentElement.getBoundingClientRect().bottom + window.scrollY),
+        let dy = deltaY / 8
+        let newY = Math.max(Math.min(baseY + (dy / Math.sqrt(1 + dy * dy)) * 8,
+            dragTarget.parentElement.getBoundingClientRect().bottom + window.scrollY),
             dragTarget.parentElement.getBoundingClientRect().top + window.scrollY);
-        let dy = (deltaY - baseY) / 8
-        dragTarget.style.top = `${baseY + (dy / Math.sqrt(1 + dy * dy)) * 8}px`
+        dragTarget.style.top = `${newY}px`
         let dragRect = dragTarget.getBoundingClientRect()
-        let dragMid = dragRect.top + dragFrom.y + window.scrollY
+        let dragMid = dragRect.top + (dragFrom.y - dragFrom.baseY) + window.scrollY
         let inserted = false
         for (elem of dragTarget.parentElement.children) {
             if (elem === dragSpacer) {
@@ -140,7 +147,7 @@ document.querySelector('body').addEventListener('mouseup', event => {
     if (!dragTarget) {
         return
     }
-    if (!dragging) {
+    if (!dragging || (Date.now() - dragStart) < 50) {
         if (dragTarget.classList.contains('hidden')) {
             dragTarget.classList.remove('hidden')
             if (dragTarget.parentElement.classList.contains('collapsible')) {
@@ -168,7 +175,8 @@ document.querySelector('body').addEventListener('mouseup', event => {
                 }
             }
         }
-    } else {
+    }
+    if (dragging) {
         dragTarget.classList.remove('dragging')
         dragTarget.parentElement.classList.remove('dragFlow')
         dragTarget.style.left = null
