@@ -159,7 +159,7 @@ document.querySelector('body').addEventListener('mouseup', event => {
     if (!dragTarget) {
         return
     }
-    if (!dragging || (Date.now() - dragStart) < 50) {
+    if (!dragging || (Date.now() - dragStart) < 100) {
         if (dragTarget.classList.contains('hidden')) {
             dragTarget.classList.remove('hidden')
             if (dragTarget.parentElement.classList.contains('collapsible')) {
